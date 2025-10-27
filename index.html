@@ -1,3 +1,4 @@
+#Lanh Quoc 
 # WEB-THUYET-TRINH
 <!doctype html>
 <html lang="vi">
@@ -206,5 +207,95 @@
 })();
 </script>
 
+<style>
+  /* Toàn bộ slide nằm dọc, có thể cuộn */
+  .slide-container {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  section {
+    height: 100vh;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.6s ease;
+  }
+
+  /* Hiệu ứng nền */
+  section:nth-child(odd) {
+    background: linear-gradient(to bottom right, #87CEFA, #E0FFFF);
+  }
+  section:nth-child(even) {
+    background: linear-gradient(to bottom right, #FFDAB9, #FFB6C1);
+  }
+
+  /* Nút điều hướng */
+  .nav-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 10px;
+  }
+  .nav-buttons button {
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  .nav-buttons button:hover {
+    background-color: #5dade2;
+  }
+</style>
+
+<div class="slide-container" id="slides">
+  <section>
+    <h1>Slide 1 – Vai trò của Kỹ năng Mềm</h1>
+    <p>Kỹ năng mềm là yếu tố quan trọng giúp con người thành công trong công việc và cuộc sống...</p>
+  </section>
+  <section>
+    <h1>Slide 2 – Tác động đến giới trẻ</h1>
+    <p>Tuổi trẻ cần rèn luyện kỹ năng mềm như giao tiếp, làm việc nhóm, và tư duy phản biện...</p>
+  </section>
+  <section>
+    <h1>Slide 3 – Hành động cụ thể</h1>
+    <p>Hãy tham gia câu lạc bộ, luyện nói, và trau dồi kỹ năng xã hội mỗi ngày.</p>
+  </section>
+</div>
+
+<div class="nav-buttons">
+  <button id="prevBtn">⬆ Lên</button>
+  <button id="nextBtn">⬇ Xuống</button>
+</div>
+
+<script>
+  const container = document.getElementById('slides');
+  const slides = document.querySelectorAll('.slide-container section');
+  let current = 0;
+
+  function scrollToSlide(index) {
+    if (index >= 0 && index < slides.length) {
+      slides[index].scrollIntoView({ behavior: 'smooth' });
+      current = index;
+    }
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    scrollToSlide(current + 1);
+  });
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    scrollToSlide(current - 1);
+  });
+</script>
+
+  
 </body>
 </html>
